@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import useWindowDimensions from "./hooks/useWindowDimensions";
 import { VehicleSelectView } from "./indexView";
 
 type Vehicle = {
@@ -26,8 +25,6 @@ export function VehicleSelect({
   const [search, setSearch] = useState<string>("");
   const [selectedOption, setSelectedOption] = useState<Vehicle[]>([]);
   const wrapperRef = useRef<HTMLDivElement>(null);
-
-  const { width } = useWindowDimensions();
 
   function toggling() {
     setDisplay(!display);
@@ -86,7 +83,7 @@ export function VehicleSelect({
   return (
     <VehicleSelectView
       ref={wrapperRef}
-      mobileScreen={width < 425}
+      mobileScreen={mobileScreen}
       toggling={toggling}
       selectedOption={selectedOption}
       id={id}
