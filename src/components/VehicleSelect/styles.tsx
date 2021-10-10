@@ -7,8 +7,9 @@ interface StyledProps {
 }
 
 const DropDownContainer = styled.div`
-  width: ${({ isLarge }: StyledProps) =>
-    isLarge ? "34.375rem" : "22.6875rem"};
+  width: 100%;
+  max-width: 34.375rem;
+  min-width: 22.6875rem;
   border: 1px solid #d9d9d9;
   border-radius: 5px;
   height: ${({ isLarge }: StyledProps) => (isLarge ? "2.625rem" : "2.375rem")};
@@ -43,8 +44,9 @@ const DropDownInput = styled.div`
 const DropDownListContainer = styled.div`
   position: absolute;
   z-index: 100;
-  width: ${({ isLarge }: StyledProps) =>
-    isLarge ? "34.375rem" : "22.6875rem"};
+  width: 100%;
+  max-width: 34.375rem;
+  min-width: 22.6875rem;
   top: 48px;
 `;
 

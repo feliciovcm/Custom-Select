@@ -25,7 +25,7 @@ type Vehicle = {
 };
 
 interface VehicleSelectViewProps {
-  isLarge?: boolean;
+  mobileScreen?: boolean;
   toggling: () => void;
   selectedOption: Vehicle[];
   id?: string;
@@ -43,7 +43,7 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
   VehicleSelectViewProps
 > = (
   {
-    isLarge,
+    mobileScreen,
     toggling,
     selectedOption,
     id,
@@ -58,10 +58,10 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
   ref
 ) => {
   return (
-    <DropDownContainer ref={ref} isLarge={isLarge}>
+    <DropDownContainer ref={ref} isLarge={!mobileScreen}>
       <DropDownHeader
         onClick={toggling}
-        isLarge={isLarge}
+        isLarge={!mobileScreen}
         hasChoices={selectedOption.length > 0}
       >
         {selectedOption.length > 0 && (
@@ -76,14 +76,14 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
               setSearch(event.target.value);
             }}
             value={search}
-            isLarge={isLarge}
+            isLarge={!mobileScreen}
             hasChoices={selectedOption.length > 0}
           />
           <img src={DropdownIcon} alt="Dropdown Icon" />
         </DropDownInput>
       </DropDownHeader>
       {display && (
-        <DropDownListContainer isLarge={isLarge}>
+        <DropDownListContainer>
           <DropDownList>
             {options
               .filter(({ id }: Vehicle) => id.indexOf(search.toUpperCase()) > -1)

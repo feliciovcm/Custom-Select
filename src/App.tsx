@@ -34,7 +34,6 @@ function App() {
           onChange={handleChange}
           name="select"
           id="select"
-          isLarge
         />
       </header>
     </div>
