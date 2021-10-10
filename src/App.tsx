@@ -34,6 +34,10 @@ function App() {
           onChange={handleChange}
           name="select"
           id="select"
+          title="Veículos"
+          subtitle="Adicione seus veículos ao grupo"
+          showTitle
+          showID
         />
       </header>
     </div>

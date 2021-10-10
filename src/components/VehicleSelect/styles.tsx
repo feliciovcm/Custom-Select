@@ -6,6 +6,30 @@ interface StyledProps {
   isChosen?: boolean;
 }
 
+const SelectContainer = styled.div`
+  text-align: left !important;
+  width: 100%;
+  font: 400 1rem "Inter", sans-serif;
+`;
+
+const TitleContainer = styled.div`
+  margin-bottom: 1rem;
+`;
+
+const Title = styled.h3`
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #33303e;
+  line-height: 1.375rem;
+`;
+
+const Subtitle = styled.p`
+  margin-top: 0.25rem;
+  color: #898989;
+  font-size: 0.75rem;
+`;
+
 const DropDownContainer = styled.div`
   width: 100%;
   max-width: 34.375rem;
@@ -14,7 +38,6 @@ const DropDownContainer = styled.div`
   border-radius: 5px;
   height: ${({ isLarge }: StyledProps) => (isLarge ? "2.625rem" : "2.375rem")};
   position: relative;
-  font: 400 1rem "Inter", sans-serif;
 `;
 
 const DropDownHeader = styled.div`
@@ -131,4 +154,8 @@ export {
   DropDownHeader,
   DropDownInput,
   ShrinkPlaceholder,
+  SelectContainer,
+  Title,
+  Subtitle,
+  TitleContainer,
 };

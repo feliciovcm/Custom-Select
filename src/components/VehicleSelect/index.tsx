@@ -12,6 +12,10 @@ interface VehicleSelectProps {
   name: string;
   id?: string;
   mobileScreen?: boolean;
+  title: string;
+  subtitle?: string;
+  showTitle?: boolean;
+  showID?: boolean;
 }
 
 export function VehicleSelect({
@@ -20,6 +24,10 @@ export function VehicleSelect({
   name,
   id,
   mobileScreen,
+  title,
+  subtitle,
+  showTitle,
+  showID,
 }: VehicleSelectProps) {
   const [display, setDisplay] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
@@ -78,10 +86,13 @@ export function VehicleSelect({
   const placeholder =
     selectedOption.length > 0
       ? `${selectedOption.length} itens selecionados`
-      : "Veículos";
+      : title;
 
   return (
     <VehicleSelectView
+      title={title}
+      showTitle={showTitle}
+      subtitle={subtitle}
       ref={wrapperRef}
       mobileScreen={mobileScreen}
       toggling={toggling}
@@ -94,6 +105,7 @@ export function VehicleSelect({
       display={display}
       options={options}
       setVehicleChosen={setVehicleChosen}
+      showID={showID}
     />
   );
 }
