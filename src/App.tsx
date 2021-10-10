@@ -1,4 +1,3 @@
-import "./App.css";
 import { VehicleSelect } from "./components/VehicleSelect";
 import { makeServer } from "./services/mirage";
 import { api } from "./services/api";
@@ -27,19 +26,17 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <VehicleSelect
-          options={options}
-          onChange={handleChange}
-          name="select"
-          id="select"
-          title="Veículos"
-          subtitle="Adicione seus veículos ao grupo"
-          showTitle
-          showId
-        />
-      </header>
+    <div style={{ margin: "5rem" }}>
+      <VehicleSelect
+        options={options}
+        onChange={handleChange}
+        name="select"
+        id="select"
+        title="Veículos"
+        subtitle="Adicione seus veículos ao grupo"
+        showTitle
+        showId
+      />
     </div>
   );
 }
