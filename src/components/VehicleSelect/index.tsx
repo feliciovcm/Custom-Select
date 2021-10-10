@@ -15,7 +15,7 @@ interface VehicleSelectProps {
   title: string;
   subtitle?: string;
   showTitle?: boolean;
-  showID?: boolean;
+  showId?: boolean;
 }
 
 export function VehicleSelect({
@@ -27,7 +27,7 @@ export function VehicleSelect({
   title,
   subtitle,
   showTitle,
-  showID,
+  showId,
 }: VehicleSelectProps) {
   const [display, setDisplay] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
@@ -105,7 +105,7 @@ export function VehicleSelect({
       display={display}
       options={options}
       setVehicleChosen={setVehicleChosen}
-      showID={showID}
+      showId={showId}
     />
   );
 }

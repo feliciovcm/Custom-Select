@@ -37,7 +37,7 @@ function App() {
           title="Veículos"
           subtitle="Adicione seus veículos ao grupo"
           showTitle
-          showID
+          showId
         />
       </header>
     </div>

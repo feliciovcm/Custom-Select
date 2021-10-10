@@ -43,7 +43,7 @@ interface VehicleSelectViewProps {
   title: string;
   subtitle?: string;
   showTitle?: boolean;
-  showID?: boolean;
+  showId?: boolean;
 }
 
 const VehicleSelectViewBase: ForwardRefRenderFunction<
@@ -65,7 +65,7 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
     title,
     subtitle,
     showTitle,
-    showID,
+    showId,
   },
   ref
 ) => {
@@ -121,7 +121,7 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
                       )}
                     >
                       <div>
-                        {showID && <PlateSpan>{option.id}</PlateSpan>}{" "}
+                        {showId && <PlateSpan>{option.id}</PlateSpan>}{" "}
                         {option.name}
                       </div>
                       {selectedOption.some(
