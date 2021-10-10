@@ -120,7 +120,6 @@ const Input = styled.input`
   width: 100%;
   border: none;
   font-size: 0.875rem;
-  text-transform: capitalize;
   outline: none;
   padding: 0;
   cursor: default;
