@@ -1,23 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { VehicleSelect } from "./components/VehicleSelect";
+import { makeServer } from "./services/mirage";
+import { api } from "./services/api";
+import { useEffect, useState } from "react";
+
+type Vehicle = {
+  id: string;
+  name: string;
+};
+
+type Res = {
+  vehicles: Vehicle[];
+};
 
 function App() {
+  const [options, setOptions] = useState<Vehicle[]>([]);
+
+  makeServer();
+  useEffect(() => {
+    const response = api.get("/vehicles").then((res) => res.data);
+    response.then((res: Res) => setOptions(res.vehicles));
+  }, []);
+
+  function handleChange(event: Vehicle[]) {
+    console.log(event);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <VehicleSelect
+          options={options}
+          onChange={handleChange}
+          name="select"
+          id="select"
+          isLarge
+        />
       </header>
     </div>
   );
