@@ -16,6 +16,8 @@ interface VehicleSelectProps {
   subtitle?: string;
   showTitle?: boolean;
   showId?: boolean;
+  minWidth?: string | number;
+  maxWidth?: string | number;
 }
 
 export function VehicleSelect({
@@ -28,6 +30,8 @@ export function VehicleSelect({
   subtitle,
   showTitle,
   showId,
+  minWidth,
+  maxWidth,
 }: VehicleSelectProps) {
   const [display, setDisplay] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
@@ -106,6 +110,8 @@ export function VehicleSelect({
       options={options}
       setVehicleChosen={setVehicleChosen}
       showId={showId}
+      minWidth={minWidth}
+      maxWidth={maxWidth}
     />
   );
 }

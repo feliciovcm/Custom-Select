@@ -4,6 +4,8 @@ interface StyledProps {
   isLarge?: boolean;
   hasChoices?: boolean;
   isChosen?: boolean;
+  minWidth?: string | number;
+  maxWidth?: string | number;
 }
 
 const SelectContainer = styled.div`
@@ -32,8 +34,8 @@ const Subtitle = styled.p`
 
 const DropDownContainer = styled.div`
   width: 100%;
-  max-width: 34.375rem;
-  min-width: 22.6875rem;
+  max-width: ${({ maxWidth }: StyledProps) => maxWidth};
+  min-width: ${({ minWidth }: StyledProps) => minWidth};
   border: 1px solid #d9d9d9;
   border-radius: 5px;
   height: ${({ isLarge }: StyledProps) => (isLarge ? "2.625rem" : "2.375rem")};
@@ -68,8 +70,8 @@ const DropDownListContainer = styled.div`
   position: absolute;
   z-index: 100;
   width: 100%;
-  max-width: 34.375rem;
-  min-width: 22.6875rem;
+  max-width: ${({ maxWidth }: StyledProps) => maxWidth};
+  min-width: ${({ minWidth }: StyledProps) => minWidth};
   top: 48px;
 `;
 

@@ -44,6 +44,8 @@ interface VehicleSelectViewProps {
   subtitle?: string;
   showTitle?: boolean;
   showId?: boolean;
+  minWidth?: string | number;
+  maxWidth?: string | number;
 }
 
 const VehicleSelectViewBase: ForwardRefRenderFunction<
@@ -66,9 +68,15 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
     subtitle,
     showTitle,
     showId,
+    minWidth = "22.6875rem",
+    maxWidth = "34.375rem",
   },
   ref
 ) => {
+  function checkType(value: string | number) {
+    const type = typeof value === "number";
+    return type;
+  }
   return (
     <SelectContainer>
       {showTitle && (
@@ -77,7 +85,12 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
           {subtitle && <Subtitle>{subtitle}</Subtitle>}
         </TitleContainer>
       )}
-      <DropDownContainer ref={ref} isLarge={!mobileScreen}>
+      <DropDownContainer
+        ref={ref}
+        isLarge={!mobileScreen}
+        minWidth={checkType(minWidth) ? `${minWidth}px` : minWidth}
+        maxWidth={checkType(maxWidth) ? `${maxWidth}px` : maxWidth}
+      >
         <DropDownHeader
           onClick={toggling}
           isLarge={!mobileScreen}
@@ -102,7 +115,10 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
           </DropDownInput>
         </DropDownHeader>
         {display && (
-          <DropDownListContainer>
+          <DropDownListContainer
+            minWidth={checkType(minWidth) ? `${minWidth}px` : minWidth}
+            maxWidth={checkType(maxWidth) ? `${maxWidth}px` : maxWidth}
+          >
             <DropDownList>
               {options
                 .filter(
