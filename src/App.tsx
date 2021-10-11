@@ -33,6 +33,7 @@ function App() {
         title="veículos"
         showSubtitle
         showListItemsSubtitle
+        maxMenuItemsDisplay={20}
       />
     </div>
   );

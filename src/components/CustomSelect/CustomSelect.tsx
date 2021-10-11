@@ -20,6 +20,7 @@ interface CustomSelectProps {
   isMulti?: boolean;
   minWidth?: string | number;
   maxWidth?: string | number;
+  maxMenuItemsDisplay?: number;
 }
 
 export function CustomSelect(props: CustomSelectProps) {
@@ -36,6 +37,7 @@ export function CustomSelect(props: CustomSelectProps) {
     minWidth,
     maxWidth,
     isMulti,
+    maxMenuItemsDisplay = 8,
   } = props;
 
   const [display, setDisplay] = useState<boolean>(false);
@@ -44,6 +46,21 @@ export function CustomSelect(props: CustomSelectProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const subtitle = `Adicione seus ${title.toLowerCase()} ao grupo`;
+
+  const placeholder =
+    selectedOption.length > 0
+      ? selectedOption.length === 1
+        ? "1 item selecionado"
+        : `${selectedOption.length} itens selecionados`
+      : title;
+
+  function checkType(value: string | number): boolean {
+    const type = typeof value === "number";
+    return type;
+  }
+
+  const maxMenuHeight =
+    maxMenuItemsDisplay === 0 ? "" : `${maxMenuItemsDisplay * 40 + 2}px`;
 
   function toggling() {
     setDisplay(!display);
@@ -99,13 +116,6 @@ export function CustomSelect(props: CustomSelectProps) {
     }
   }, [selectedOption, onChange, isMulti]);
 
-  const placeholder =
-    selectedOption.length > 0
-      ? selectedOption.length === 1
-        ? "1 item selecionado"
-        : `${selectedOption.length} itens selecionados`
-      : title;
-
   return (
     <CustomSelectView
       title={title}
@@ -127,6 +137,9 @@ export function CustomSelect(props: CustomSelectProps) {
       showListItemsSubtitle={showListItemsSubtitle}
       minWidth={minWidth}
       maxWidth={maxWidth}
+      checkType={checkType}
+      maxMenuHeight={maxMenuHeight}
+      showScroll={options.length > maxMenuItemsDisplay}
     />
   );
 }

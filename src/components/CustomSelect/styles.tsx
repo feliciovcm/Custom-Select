@@ -6,6 +6,8 @@ interface StyledProps {
   isChosen?: boolean;
   minWidth?: string | number;
   maxWidth?: string | number;
+  maxMenuHeight?: string;
+  showScroll?: boolean;
 }
 
 const SelectContainer = styled.div`
@@ -86,6 +88,8 @@ const DropDownList = styled.ul`
   color: #898989;
   font-weight: 500;
   text-align: left;
+  overflow-y: ${({ showScroll }) => (showScroll ? "scroll" : "")};
+  max-height: ${({ maxMenuHeight }: StyledProps) => maxMenuHeight};
 `;
 
 const ListItem = styled.li`

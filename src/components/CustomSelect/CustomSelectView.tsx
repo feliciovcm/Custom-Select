@@ -48,6 +48,9 @@ interface CustomSelectViewProps {
   showListItemsSubtitle?: boolean;
   minWidth?: string | number;
   maxWidth?: string | number;
+  checkType: (value: string | number) => boolean;
+  maxMenuHeight?: string;
+  showScroll: boolean;
 }
 
 const CustomSelectViewBase: ForwardRefRenderFunction<
@@ -73,12 +76,12 @@ const CustomSelectViewBase: ForwardRefRenderFunction<
     showListItemsSubtitle,
     minWidth = "22.6875rem",
     maxWidth = "34.375rem",
+    checkType,
+    maxMenuHeight,
+    showScroll,
   } = props;
 
-  function checkType(value: string | number) {
-    const type = typeof value === "number";
-    return type;
-  }
+ 
   return (
     <SelectContainer>
       {showTitle && (
@@ -121,7 +124,7 @@ const CustomSelectViewBase: ForwardRefRenderFunction<
             minWidth={checkType(minWidth) ? `${minWidth}px` : minWidth}
             maxWidth={checkType(maxWidth) ? `${maxWidth}px` : maxWidth}
           >
-            <DropDownList>
+            <DropDownList maxMenuHeight={maxMenuHeight} showScroll={showScroll}>
               {options
                 .filter(
                   ({ name }: Option) => name.indexOf(search.toUpperCase()) > -1
