@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# Custom Select
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
-## Available Scripts
+![GitHub repo size](https://img.shields.io/github/repo-size/feliciovcm/Custom-Select?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/feliciovcm/Custom-Select?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/feliciovcm/Custom-Select?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/feliciovcm/Custom-Select?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/feliciovcm/Custom-Select?style=for-the-badge)
 
-In the project directory, you can run:
+<img src="/public/layout.png" alt="Exemplo Layout">
 
-### `yarn start`
+> This repository is an example of a custom select field component using React.js, styled-components, and typescript.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Enhancements
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This project is still in development and is open to ideas. The next updates will be focused on making it more generic.
 
-### `yarn test`
+- [x] Accept any title and the options to show it or not.
+- [x] Accept any array of object that have properties name and id.
+- [ ] Implement props to choose the color schema.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 💻 Prerequisites
 
-### `yarn build`
+Before start installation, make sure you attend the following requirements:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- In order to run the project in your local machine you need to have `<node.js 10.15.3>` or above installed
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Installing
 
-### `yarn eject`
+To install the <Custom-Select>, follow the instructions below:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Clone the repository in a directory of your preference.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install node dependencies needed to the project execute:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+yarn intall
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## ☕ Using <Custom-Select>
 
-## Learn More
+To start using <Custom-Select>, follow the steps:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+yarn start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is a front-end only application, that runs on port 3000.
+
+## 📫 Contributing for <Custom-Select>
+
+<!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
+
+For contributions <Custom-Select>, follow the steps:
+
+1. Fork this repository.
+2. Create a branch: `git checkout -b <branch>`.
+3. Make your updates and commit: `git commit -m '<commit_message>'`
+4. Merge the branch: `git push origin <Custom-Select> / <master>`
+5. Create a pull request.
+
+As an alternative, see Github documentation on [how to create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+
+[⬆ Voltar ao topo](#Custom-Select)<br>
