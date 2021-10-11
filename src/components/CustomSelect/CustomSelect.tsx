@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { VehicleSelectView } from "./CustomSelectView";
+import { CustomSelectView } from "./CustomSelectView";
 
-type Vehicle = {
+type Option = {
   id: string | number;
   name: string;
   subtitle?: string;
 };
 
-interface VehicleSelectProps {
-  options: Vehicle[];
-  onChange: (event: Vehicle[] | Vehicle) => void;
+interface CustomSelectProps {
+  options: Option[];
+  onChange: (event: Option[] | Option) => void;
   name: string;
   id?: string;
   mobileScreen?: boolean;
@@ -22,7 +22,7 @@ interface VehicleSelectProps {
   maxWidth?: string | number;
 }
 
-export function VehicleSelect(props: VehicleSelectProps) {
+export function CustomSelect(props: CustomSelectProps) {
   const {
     options = [],
     onChange,
@@ -40,7 +40,7 @@ export function VehicleSelect(props: VehicleSelectProps) {
 
   const [display, setDisplay] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
-  const [selectedOption, setSelectedOption] = useState<Vehicle[]>([]);
+  const [selectedOption, setSelectedOption] = useState<Option[]>([]);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const subtitle = `Adicione seus ${title.toLowerCase()} ao grupo`;
@@ -49,30 +49,30 @@ export function VehicleSelect(props: VehicleSelectProps) {
     setDisplay(!display);
   }
 
-  function checkVehicleIndex(newArr: Vehicle[], vehicle: Vehicle) {
-    const indexOfVehicle = newArr.findIndex(
-      (option: Vehicle) => option.id === vehicle.id
+  function checkOptionIndex(newArr: Option[], option: Option) {
+    const indexOfOption = newArr.findIndex(
+      (item: Option) => item.id === option.id
     );
-    return indexOfVehicle;
+    return indexOfOption;
   }
 
-  function handleAddVehicleToChosenList(vehicle: Vehicle) {
+  function handleAddOptionToChosenList(option: Option) {
     const newArr = [...selectedOption];
-    const vehicleAlreadyChosen = checkVehicleIndex(newArr, vehicle);
-    if (vehicleAlreadyChosen > -1) {
-      newArr.splice(vehicleAlreadyChosen, 1);
+    const optionAlreadyChosen = checkOptionIndex(newArr, option);
+    if (optionAlreadyChosen > -1) {
+      newArr.splice(optionAlreadyChosen, 1);
       setSelectedOption(newArr);
       return;
     }
-    newArr.push(vehicle);
+    newArr.push(option);
     setSelectedOption(newArr);
   }
 
-  function setVehicleChosen(vehicle: Vehicle) {
+  function setOptionChosen(option: Option) {
     setSearch("");
-    if (isMulti) handleAddVehicleToChosenList(vehicle);
+    if (isMulti) handleAddOptionToChosenList(option);
     else {
-      setSelectedOption([vehicle]);
+      setSelectedOption([option]);
     }
   }
 
@@ -107,7 +107,7 @@ export function VehicleSelect(props: VehicleSelectProps) {
       : title;
 
   return (
-    <VehicleSelectView
+    <CustomSelectView
       title={title}
       showTitle={showTitle}
       subtitle={subtitle}
@@ -122,7 +122,7 @@ export function VehicleSelect(props: VehicleSelectProps) {
       search={search}
       display={display}
       options={options}
-      setVehicleChosen={setVehicleChosen}
+      setOptionChosen={setOptionChosen}
       showSubtitle={showSubtitle}
       showListItemsSubtitle={showListItemsSubtitle}
       minWidth={minWidth}

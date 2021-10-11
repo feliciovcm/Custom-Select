@@ -23,24 +23,24 @@ import {
   SetStateAction,
 } from "react";
 
-type Vehicle = {
+type Option = {
   id: string | number;
   name: string;
   subtitle?: string;
 };
 
-interface VehicleSelectViewProps {
+interface CustomSelectViewProps {
   mobileScreen?: boolean;
   toggling: () => void;
-  selectedOption: Vehicle[];
+  selectedOption: Option[];
   id?: string;
   name: string;
   placeholder: string;
   setSearch: Dispatch<SetStateAction<string>>;
   search: string;
   display: boolean;
-  options: Vehicle[];
-  setVehicleChosen: (vehicle: Vehicle) => void;
+  options: Option[];
+  setOptionChosen: (option: Option) => void;
   title: string;
   subtitle?: string;
   showTitle?: boolean;
@@ -50,9 +50,9 @@ interface VehicleSelectViewProps {
   maxWidth?: string | number;
 }
 
-const VehicleSelectViewBase: ForwardRefRenderFunction<
+const CustomSelectViewBase: ForwardRefRenderFunction<
   HTMLDivElement,
-  VehicleSelectViewProps
+  CustomSelectViewProps
 > = (props, ref) => {
   const {
     mobileScreen,
@@ -65,7 +65,7 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
     search,
     display,
     options,
-    setVehicleChosen,
+    setOptionChosen,
     title,
     subtitle,
     showTitle,
@@ -124,18 +124,18 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
             <DropDownList>
               {options
                 .filter(
-                  ({ name }: Vehicle) => name.indexOf(search.toUpperCase()) > -1
+                  ({ name }: Option) => name.indexOf(search.toUpperCase()) > -1
                 )
-                .map((option: Vehicle) => {
+                .map((option: Option) => {
                   return (
                     <ListItem
                       key={option.id}
                       onClick={() => {
-                        setVehicleChosen(option);
+                        setOptionChosen(option);
                       }}
                       tabIndex={0}
                       isChosen={selectedOption.some(
-                        (item: Vehicle) => option.id === item.id
+                        (item: Option) => option.id === item.id
                       )}
                     >
                       <div>
@@ -143,7 +143,7 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
                         {showListItemsSubtitle && option.subtitle}
                       </div>
                       {selectedOption.some(
-                        (item: Vehicle) => option.id === item.id
+                        (item: Option) => option.id === item.id
                       ) && <img src={CheckIcon} alt="Check Icon" />}
                     </ListItem>
                   );
@@ -156,4 +156,4 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
   );
 };
 
-export const VehicleSelectView = forwardRef(VehicleSelectViewBase);
+export const CustomSelectView = forwardRef(CustomSelectViewBase);

@@ -1,4 +1,4 @@
-import { VehicleSelect } from "./components/CustomSelect/CustomSelect";
+import { CustomSelect } from "./components/CustomSelect/CustomSelect";
 import { makeServer } from "./services/mirage";
 import { api } from "./services/api";
 import { useEffect, useState } from "react";
@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div style={{ margin: "5rem" }}>
-      <VehicleSelect
+      <CustomSelect
         options={options}
         onChange={handleChange}
         name="select"
