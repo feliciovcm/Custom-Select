@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 interface StyledProps {
-  isLarge?: boolean;
-  hasChoices?: boolean;
-  isChosen?: boolean;
-  minWidth?: string | number;
-  maxWidth?: string | number;
-  maxMenuHeight?: string;
-  showScroll?: boolean;
+  $isLarge?: boolean;
+  $hasChoices?: boolean;
+  $isChosen?: boolean;
+  $minWidth?: string | number;
+  $maxWidth?: string | number;
+  $maxMenuHeight?: string;
+  $showScroll?: boolean;
 }
 
 const SelectContainer = styled.div`
@@ -37,21 +37,21 @@ const Subtitle = styled.p`
 
 const DropDownContainer = styled.div`
   width: 100%;
-  max-width: ${({ maxWidth }: StyledProps) => maxWidth};
-  min-width: ${({ minWidth }: StyledProps) => minWidth};
+  max-width: ${({ $maxWidth }: StyledProps) => $maxWidth};
+  min-width: ${({ $minWidth }: StyledProps) => $minWidth};
   border: 1px solid #d9d9d9;
   border-radius: 5px;
-  height: ${({ isLarge }: StyledProps) => (isLarge ? "2.625rem" : "2.375rem")};
+  height: ${({ $isLarge }: StyledProps) => ($isLarge ? "2.625rem" : "2.375rem")};
   position: relative;
 `;
 
 const DropDownHeader = styled.div`
-  padding: ${({ isLarge, hasChoices }: StyledProps) =>
-    isLarge && hasChoices
+  padding: ${({ $isLarge, $hasChoices }: StyledProps) =>
+    $isLarge && $hasChoices
       ? "0.5rem 0.5625rem 0.5625rem"
-      : isLarge && !hasChoices
+      : $isLarge && !$hasChoices
       ? "0.8175rem 0.5625rem"
-      : !isLarge && hasChoices
+      : !$isLarge && $hasChoices
       ? "0.375rem 0.5625rem 0.4375rem"
       : "0.6875rem 0.5625rem"};
   font-weight: 500;
@@ -73,8 +73,8 @@ const DropDownListContainer = styled.div`
   position: absolute;
   z-index: 100;
   width: 100%;
-  max-width: ${({ maxWidth }: StyledProps) => maxWidth};
-  min-width: ${({ minWidth }: StyledProps) => minWidth};
+  max-width: ${({ $maxWidth }: StyledProps) => $maxWidth};
+  min-width: ${({ $minWidth }: StyledProps) => $minWidth};
   top: 48px;
 `;
 
@@ -88,8 +88,8 @@ const DropDownList = styled.ul`
   color: #898989;
   font-weight: 500;
   text-align: left;
-  overflow-y: ${({ showScroll }) => (showScroll ? "scroll" : "")};
-  max-height: ${({ maxMenuHeight }: StyledProps) => maxMenuHeight};
+  overflow-y: ${({ $showScroll }) => ($showScroll ? "scroll" : "")};
+  max-height: ${({ $maxMenuHeight }: StyledProps) => $maxMenuHeight};
 `;
 
 const ListItem = styled.li`
@@ -113,8 +113,8 @@ const ListItem = styled.li`
   &:hover {
     background-color: #f1f3f7;
   }
-  background-color: ${({ isChosen }: StyledProps) =>
-    isChosen ? "#F1F3F7" : "white"};
+  background-color: ${({ $isChosen }: StyledProps) =>
+    $isChosen ? "#F1F3F7" : "white"};
 `;
 
 const PlateSpan = styled.span`
@@ -133,12 +133,12 @@ const Input = styled.input`
 
   ::placeholder,
   ::-webkit-input-placeholder {
-    color: ${({ hasChoices }: StyledProps) =>
-      hasChoices ? "#000000" : "#898989"};
-    opacity: ${({ hasChoices }: StyledProps) => (hasChoices ? 0.65 : 1)};
+    color: ${({ $hasChoices }: StyledProps) =>
+      $hasChoices ? "#000000" : "#898989"};
+    opacity: ${({ $hasChoices }: StyledProps) => ($hasChoices ? 0.65 : 1)};
   }
   :-ms-input-placeholder {
-    color: ${({ hasChoices }: StyledProps) => (hasChoices ? 0.65 : 1)};
+    color: ${({ $hasChoices }: StyledProps) => ($hasChoices ? 0.65 : 1)};
     opacity: 0.65;
   }
 `;

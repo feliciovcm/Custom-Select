@@ -92,14 +92,14 @@ const CustomSelectViewBase: ForwardRefRenderFunction<
       )}
       <DropDownContainer
         ref={ref}
-        isLarge={!mobileScreen}
-        minWidth={checkType(minWidth) ? `${minWidth}px` : minWidth}
-        maxWidth={checkType(maxWidth) ? `${maxWidth}px` : maxWidth}
+        $isLarge={!mobileScreen}
+        $minWidth={checkType(minWidth) ? `${minWidth}px` : minWidth}
+        $maxWidth={checkType(maxWidth) ? `${maxWidth}px` : maxWidth}
       >
         <DropDownHeader
           onClick={toggling}
-          isLarge={!mobileScreen}
-          hasChoices={selectedOption.length > 0}
+          $isLarge={!mobileScreen}
+          $hasChoices={selectedOption.length > 0}
         >
           {selectedOption.length > 0 && (
             <ShrinkPlaceholder>{title}</ShrinkPlaceholder>
@@ -113,18 +113,18 @@ const CustomSelectViewBase: ForwardRefRenderFunction<
                 setSearch(event.target.value);
               }}
               value={search}
-              isLarge={!mobileScreen}
-              hasChoices={selectedOption.length > 0}
+              $isLarge={!mobileScreen}
+              $hasChoices={selectedOption.length > 0}
             />
             <img src={DropdownIcon} alt="Dropdown Icon" />
           </DropDownInput>
         </DropDownHeader>
         {display && (
           <DropDownListContainer
-            minWidth={checkType(minWidth) ? `${minWidth}px` : minWidth}
-            maxWidth={checkType(maxWidth) ? `${maxWidth}px` : maxWidth}
+            $minWidth={checkType(minWidth) ? `${minWidth}px` : minWidth}
+            $maxWidth={checkType(maxWidth) ? `${maxWidth}px` : maxWidth}
           >
-            <DropDownList maxMenuHeight={maxMenuHeight} showScroll={showScroll}>
+            <DropDownList $maxMenuHeight={maxMenuHeight} $showScroll={showScroll}>
               {options
                 .filter(
                   ({ name }: Option) => name.indexOf(search.toUpperCase()) > -1
@@ -137,7 +137,7 @@ const CustomSelectViewBase: ForwardRefRenderFunction<
                         setOptionChosen(option);
                       }}
                       tabIndex={0}
-                      isChosen={selectedOption.some(
+                      $isChosen={selectedOption.some(
                         (item: Option) => option.id === item.id
                       )}
                     >
