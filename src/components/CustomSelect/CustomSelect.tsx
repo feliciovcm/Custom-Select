@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { CustomSelectView } from "./CustomSelectView";
 
-type Option = {
+export type Option = {
   id: string | number;
   name: string;
   subtitle?: string;
