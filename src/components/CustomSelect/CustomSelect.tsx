@@ -8,19 +8,19 @@ export type Option = {
 };
 
 interface CustomSelectProps {
-  options: Option[];
-  onChange: (event: Option[] | Option) => void;
-  name: string;
   id?: string;
-  mobileScreen?: boolean;
-  title?: string;
-  showTitle?: boolean;
-  showSubtitle?: boolean;
-  showListItemsSubtitle?: boolean;
   isMulti?: boolean;
-  minWidth?: string | number;
-  maxWidth?: string | number;
   maxMenuItemsDisplay?: number;
+  maxWidth?: string | number;
+  minWidth?: string | number;
+  mobileScreen?: boolean;
+  name: string;
+  onChange: (event: Option[] | Option) => void;
+  options: Option[];
+  showListItemsSubtitle?: boolean;
+  showSubtitle?: boolean;
+  showTitle?: boolean;
+  title?: string;
 }
 
 export function CustomSelect(props: CustomSelectProps) {

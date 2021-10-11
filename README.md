@@ -50,6 +50,44 @@ yarn start
 
 This project is a front-end only application, that runs on port 3000.
 
+## API
+
+### Select props
+
+| name | description | type | default |
+| --- | --- | --- | --- |
+| id | html id to set on the component wrapper | String | '' |
+| isMulti | whether can select multiple or single choices | Boolean | False |
+| maxMenuItemsDisplay | number of items to show on the dropdown list | Number | 8 |
+| maxWidth | max-width applied to the component wrapper | String or Number | '34.375rem' |
+| minWidth | min-width applied to the component wrapper | String or Number | '22.6875rem' |
+| mobileScreen | whether is mobile height (40px) or not (44px) | Boolean | False |
+| name | html name to set on the component wrapper | String | '' |
+| onChange | called when select an option or input value change(combobox) | function(value, option:Option/Array<Option>) | - |
+| options | array of options to display on the dropdown list | Array<Option> | - |
+| showListItemsSubtitle | whether display or not the options subtitle prop | Boolean | False |
+| showSubtitle | whether display or not the subtitle | Boolean | False |
+| showTitle | whether display or not the title | Boolean | False |
+| title | the title of the component displayed on top of the component wrapper | String | 'Opções' |
+
+| nome | descrição | tipo | padrão |
+| --- | --- | --- | --- |
+| id | id html a ser definido no container do componente | String | '' |
+| isMulti | se pode selecionar múltiplas ecolhas ou única escolha | Boolean | False |
+| maxMenuItemsDisplay | número de itens a serem exibidos na lista de escolhas | Number | 8 |
+| maxWidth | largura máxima aplicada ao container do componente | String ou Number | '34 .375rem '|
+| minWidth | largura mínima aplicada ao container do componente | String ou Number | '22 .6875rem '|
+| mobileScreen | se é a altura do celular (40px) ou não (44px) | Boolean | False |
+| name | nome html a ser definido no container do componente | String | '' |
+| onChange | chamado ao selecionar uma opção ou alteração do valor de entrada (combobox) | Function(value, option: Option / Array <Option>) | - |
+| options | conjunto de opções para exibir na lista de escolhas | Array <Option> | - |
+| showListItemsSubtitle | se exibir ou não o subtítulo das opções | Boolean | False |
+| showSubtitle | se exibir ou não a legenda | Boolean | False |
+| showTitle | se exibir ou não o título | Boolean | False |
+| title | o título do componente exibido na parte superior do container do componente | String | 'Opções' |
+
+
+
 ## 📫 Contributing for <Custom-Select>
 
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
