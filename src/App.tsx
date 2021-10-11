@@ -1,11 +1,12 @@
-import { VehicleSelect } from "./components/VehicleSelect";
+import { VehicleSelect } from "./components/CustomSelect/CustomSelect";
 import { makeServer } from "./services/mirage";
 import { api } from "./services/api";
 import { useEffect, useState } from "react";
 
 type Vehicle = {
-  id: string;
+  id: string | number;
   name: string;
+  subtitle?: string;
 };
 
 type Res = {
@@ -21,7 +22,7 @@ function App() {
     response.then((res: Res) => setOptions(res.vehicles));
   }, []);
 
-  function handleChange(event: Vehicle[]) {
+  function handleChange(event: Vehicle[] | Vehicle) {
     console.log(event);
   }
 
@@ -32,10 +33,10 @@ function App() {
         onChange={handleChange}
         name="select"
         id="select"
-        title="Veículos"
-        subtitle="Adicione seus veículos ao grupo"
         showTitle
-        showId
+        title="veículos"
+        showSubtitle
+        showListItemsSubtitle
       />
     </div>
   );

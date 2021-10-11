@@ -24,8 +24,9 @@ import {
 } from "react";
 
 type Vehicle = {
-  id: string;
+  id: string | number;
   name: string;
+  subtitle?: string;
 };
 
 interface VehicleSelectViewProps {
@@ -43,7 +44,8 @@ interface VehicleSelectViewProps {
   title: string;
   subtitle?: string;
   showTitle?: boolean;
-  showId?: boolean;
+  showSubtitle?: boolean;
+  showListItemsSubtitle?: boolean;
   minWidth?: string | number;
   maxWidth?: string | number;
 }
@@ -51,8 +53,8 @@ interface VehicleSelectViewProps {
 const VehicleSelectViewBase: ForwardRefRenderFunction<
   HTMLDivElement,
   VehicleSelectViewProps
-> = (
-  {
+> = (props, ref) => {
+  const {
     mobileScreen,
     toggling,
     selectedOption,
@@ -67,12 +69,12 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
     title,
     subtitle,
     showTitle,
-    showId,
+    showSubtitle,
+    showListItemsSubtitle,
     minWidth = "22.6875rem",
     maxWidth = "34.375rem",
-  },
-  ref
-) => {
+  } = props;
+
   function checkType(value: string | number) {
     const type = typeof value === "number";
     return type;
@@ -82,7 +84,7 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
       {showTitle && (
         <TitleContainer>
           <Title>{title}</Title>
-          {subtitle && <Subtitle>{subtitle}</Subtitle>}
+          {showSubtitle && <Subtitle>{subtitle}</Subtitle>}
         </TitleContainer>
       )}
       <DropDownContainer
@@ -122,7 +124,7 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
             <DropDownList>
               {options
                 .filter(
-                  ({ id }: Vehicle) => id.indexOf(search.toUpperCase()) > -1
+                  ({ name }: Vehicle) => name.indexOf(search.toUpperCase()) > -1
                 )
                 .map((option: Vehicle) => {
                   return (
@@ -137,8 +139,8 @@ const VehicleSelectViewBase: ForwardRefRenderFunction<
                       )}
                     >
                       <div>
-                        {showId && <PlateSpan>{option.id}</PlateSpan>}{" "}
-                        {option.name}
+                        <PlateSpan>{option.name}</PlateSpan>{" "}
+                        {showListItemsSubtitle && option.subtitle}
                       </div>
                       {selectedOption.some(
                         (item: Vehicle) => option.id === item.id

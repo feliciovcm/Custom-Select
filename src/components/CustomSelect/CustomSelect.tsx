@@ -1,42 +1,49 @@
 import { useEffect, useRef, useState } from "react";
-import { VehicleSelectView } from "./indexView";
+import { VehicleSelectView } from "./CustomSelectView";
 
 type Vehicle = {
-  id: string;
+  id: string | number;
   name: string;
+  subtitle?: string;
 };
 
 interface VehicleSelectProps {
   options: Vehicle[];
-  onChange: (event: Vehicle[]) => void;
+  onChange: (event: Vehicle[] | Vehicle) => void;
   name: string;
   id?: string;
   mobileScreen?: boolean;
-  title: string;
-  subtitle?: string;
+  title?: string;
   showTitle?: boolean;
-  showId?: boolean;
+  showSubtitle?: boolean;
+  showListItemsSubtitle?: boolean;
+  isMulti?: boolean;
   minWidth?: string | number;
   maxWidth?: string | number;
 }
 
-export function VehicleSelect({
-  options = [],
-  onChange,
-  name,
-  id,
-  mobileScreen,
-  title,
-  subtitle,
-  showTitle,
-  showId,
-  minWidth,
-  maxWidth,
-}: VehicleSelectProps) {
+export function VehicleSelect(props: VehicleSelectProps) {
+  const {
+    options = [],
+    onChange,
+    name,
+    id,
+    mobileScreen,
+    title = "Opções",
+    showTitle,
+    showSubtitle,
+    showListItemsSubtitle,
+    minWidth,
+    maxWidth,
+    isMulti,
+  } = props;
+
   const [display, setDisplay] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
   const [selectedOption, setSelectedOption] = useState<Vehicle[]>([]);
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const subtitle = `Adicione seus ${title.toLowerCase()} ao grupo`;
 
   function toggling() {
     setDisplay(!display);
@@ -63,8 +70,10 @@ export function VehicleSelect({
 
   function setVehicleChosen(vehicle: Vehicle) {
     setSearch("");
-    handleAddVehicleToChosenList(vehicle);
-    setDisplay(false);
+    if (isMulti) handleAddVehicleToChosenList(vehicle);
+    else {
+      setSelectedOption([vehicle]);
+    }
   }
 
   function handleCLickOutside(event: any) {
@@ -84,12 +93,17 @@ export function VehicleSelect({
   }, []);
 
   useEffect(() => {
-    if (onChange) onChange(selectedOption);
-  }, [selectedOption, onChange]);
+    if (onChange) {
+      if (isMulti) onChange(selectedOption);
+      else onChange(selectedOption[0]);
+    }
+  }, [selectedOption, onChange, isMulti]);
 
   const placeholder =
     selectedOption.length > 0
-      ? `${selectedOption.length} itens selecionados`
+      ? selectedOption.length === 1
+        ? "1 item selecionado"
+        : `${selectedOption.length} itens selecionados`
       : title;
 
   return (
@@ -109,7 +123,8 @@ export function VehicleSelect({
       display={display}
       options={options}
       setVehicleChosen={setVehicleChosen}
-      showId={showId}
+      showSubtitle={showSubtitle}
+      showListItemsSubtitle={showListItemsSubtitle}
       minWidth={minWidth}
       maxWidth={maxWidth}
     />
